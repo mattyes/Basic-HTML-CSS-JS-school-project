@@ -1,21 +1,28 @@
 html, body {
     height: 100%;
+    max-width: 100%;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, Arial, Georgia, Tahoma;
+    background-color: #383A40;
     display: flex;
-    font-family: Helvetica, Arial, Georgia, Tahoma, Roboto;
-    background-color: #2d2d2e;
+    overflow: hidden;
 }
 
 #app {
     display: flex;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0; 
 }
 
-#server-list {
-    width: 120%; 
+.server-list {
+    margin: 0; 
+    width: 100%; 
     height: 100%;
-    background-color: #333;
+    background-color: #1E1F22;
     color: #fff;
     padding: 10px;
     box-sizing: border-box;
@@ -24,8 +31,9 @@ html, body {
 .friendsDM-list {
     height: 100%;
     width: 100%; 
-    background-color: #444;
+    background-color: #2B2D31;
     padding: 10px;
+    margin: 0; 
 }
 
 #dm-server-logo {
@@ -37,21 +45,181 @@ html, body {
     padding: 5%;
 }
 
+#dm-logo {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    border-radius: 20px;
+    align-items: center;
+    padding: 5%;
+    display: inline-block;
+}
+
 button[id="online-friends-btn"],
 button[id="add-friend-btn"],
 button[id="all-friends-btn"] {
     width: 225px;
-    height: 50%;
+    height: 45px;
     padding: 12px;
     border: 1px transparent;
-    background-color: #444;
+    background-color: #2B2D31;
     color: #ffffff;
     font-size: 18px;
+    text-align: center;
 }
 
 button[id="online-friends-btn"]:hover,
 button[id="add-friend-btn"]:hover,
 button[id="all-friends-btn"]:hover {
-    background-color: #555;
+    background-color: #404249;
     border-radius: 5px;
+}
+
+
+button[id="user-setting"] {
+    width: 225px;
+    height: 50px;
+    padding: 12px;
+    border: 1px transparent;
+    background-color: #2B2D31;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    bottom: 20px; 
+    position: fixed;
+}
+
+button[id="user-setting"]:hover {
+    background-color: #404249;
+    border-radius: 5px;
+}
+
+#message-input {
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #383A40;
+    border: none;
+    position: fixed;
+    bottom: 20px;
+    border-radius: 20px; 
+    margin-left: 10px;
+    display: flex;
+    overflow: hidden;
+    display: none;
+}
+
+textarea[id="chat-box"] {
+    width: 950%;
+    max-height: 500%;
+    min-height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    resize: none;
+    font-size: 17px;
+    color: #DBDEE1;
+    overflow-y: auto;
+}
+
+textarea[id="chat-box"]::placeholder {
+    outline: none;
+    color: #6A6C74;
+    font-size: 17px;
+    overflow-y: auto;
+}
+textarea[id="chat-box"]:focus {
+    outline: none;
+    font-size: 17px;
+    color: #DBDEE1;
+    overflow-y: auto;
+}
+
+i {
+    color: #B5BAC1;
+    font-size: 27px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+
+i:hover {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#online-users {
+    width: 60%;
+    max-height: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #383A40;
+    border: none;
+    position: fixed;
+    bottom: 20px;
+    border-radius: 20px; 
+    margin-left: 10px;
+    display: flex;
+    color: #ffffff;
+}
+
+input[id="friends-search-bar"] {
+    width: 60%;
+    padding: 8px;
+    box-sizing: border-box;
+    background-color: #1e1f20;
+    border: none;
+    position: fixed;
+    top: 20px;
+    border-radius: 3px; 
+    margin-left: 10px;
+    display: flex;
+    color: #ffffff;
+    outline: none;
+    font-size: 15px;
+}
+
+p[id="friends-counter-online"] {
+    color: #ABB1B7;
+    font-size: 13px;
+    margin-left: 10px;
+    top: 60px;
+    position: fixed;
+}
+
+#online-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    position: fixed;
+    top: 100px;
+    left: 345px;
+    width: 60%;
+}
+  
+.user-item {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-top: 2px solid #404249;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+.user-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-name {
+    margin: 0;
+    color: #fff;
+    font-size: 17px;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 1px;
 }

@@ -11,6 +11,7 @@ html, body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  flex-direction: column;
 }
 
 .login-container {
@@ -98,4 +99,18 @@ footer {
 .recovery-message {
   margin-bottom: 12px;
   font-size: 17px;
+}
+
+.page-not-secure {
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  margin-top: 10px;
+  background-color: rgba(237, 42, 42, 0.75);
+  border-radius: 10px;
+  padding: 5px;
+  border: 2px solid rgba(207, 27, 27, 0.55);
+  width: 35%;
+  box-sizing: border-box;
+  font-style: italic;
+  font-size: 14px;
 }

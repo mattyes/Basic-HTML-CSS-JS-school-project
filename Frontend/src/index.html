@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chat Interface</title>
   <link href="./css/interface.css" rel="stylesheet" type="text/css" />
-  <script src="./js/script.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
   <div id="app">
-    <ul>
-      <div id="server-list">
+    <ul class="server-list">
+      <div id="serers-list">
         <!-- Server Icons -->
         <img src="../images/LogoTest.jpg" id="dm-server-logo" alt="Add Server">
         <img src="../images/LogoTest.jpg" id="dm-server-logo" alt="Add Server">
@@ -21,7 +21,7 @@
       </div>
     </ul>
     <ul class="friendsDM-list">
-      <div id="friends-header"> b
+      <div id="friends-header"> 
         <button id="online-friends-btn">Online Friends</button>
         <br>
         <button id="all-friends-btn">All Friends</button>
@@ -31,19 +31,48 @@
 
       <div id="dm-list">
         <!-- User Icons -->
-        <img src="../images/LogoTest.jpg" id="dm-server-logo" alt="Add Server">
-        <p>User name</p>
-        <img src="../images/LogoTest.jpg" id="dm-server-logo" alt="Add Server">
-        <img src="../images/LogoTest.jpg" id="dm-server-logo" alt="Add Server">
+        <p>
+          <img src="../images/LogoTest.jpg" id="dm-logo" alt="Add Server">
+          User name 
+        </p>
+        <img src="../images/LogoTest.jpg" id="dm-logo" alt="Add Server">
+        <img src="../images/LogoTest.jpg" id="dm-logo" alt="Add Server">
       </div>
+      <div id="user-info">
+        <button id="user-setting">Manage Setting</button>
     </ul>
 
-
     <main id="main-content">
-      <!-- This is where dynamic content will be injected -->
+      <div id="chat-view">
+        <div id="message-input">
+          <i class="fa-solid fa-square-plus"></i>
+          <textarea id="chat-box" placeholder="Type your message" 
+          rows="1"></textarea>
+        </div>
+      </div>
+      <div id="user-info">
+        <!-- User banner and info (Left side of screen on DM pages)-->
+      </div>
+      <div id="online-users">
+        <input id="friends-search-bar" type="text" placeholder="Search">
+        <p id="friends-counter-online">Online -- 5</p> <!-- TEMP! (Number of onlien friends)-->
+        <ul class="Online-friends-list">
+          <div id="online-users-list">
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 1!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 2!</p>
+            </div>
+          </div>
+        </ul>
       <div id="content"></div>
     </main>
   </div>
+  <script src="./js/script.js"></script>
+  <script src="./js/view.js"></script>
 </body>
 
 </html>

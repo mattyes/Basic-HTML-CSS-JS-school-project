@@ -5,19 +5,15 @@ A real-time chat application that allows users to send direct messages, join ser
 ---
 
 ## Features
-- Real-time messaging for DMs and servers.
-- User authentication (Sign-Up and Login).
-- Friend lists with "Add Friend" functionality.
-- Fully responsive design optimized for desktop and mobile.
+- Real-time messaging for DMs and servers. TBD
+- User authentication (Sign-Up and Login). TBD
+- Friend lists with "Add Friend" functionality. TBD
+- Fully responsive design optimized for desktop and mobile. TBD
 
 ---
 
 ## Technologies Used
 - **Front-End:** HTML, CSS, JavaScript.
 - **Back-End:** Node.js.
-- **Database:** **TBD**.
-- **Hosting:** 
-  - **Front-End:** AWS S3.
-  - **Back-End:** Heroku.
 
 ---

@@ -22,13 +22,12 @@
     </ul>
     <ul class="friendsDM-list">
       <div id="friends-header"> 
-        <button id="online-friends-btn">Online Friends</button>
+        <button id="online-friends-btn" onclick="ShowOnlineFriends()">Online Friends</button>
         <br>
         <button id="all-friends-btn">All Friends</button>
         <br>
-        <button id="add-friend-btn">Add Friend</button>
+        <button id="add-friend-btn" onclick="addFriendOverlay()">Add Friend</button>
       </div>
-
       <div id="dm-list">
         <!-- User Icons -->
         <p>
@@ -41,7 +40,14 @@
       <div id="user-info">
         <button id="user-setting">Manage Setting</button>
     </ul>
-
+    <div id="addFriendOverlay">
+      <div class="add-friend-popup">
+        <h2>Add Friend</h2>
+        <button id="cancel-friend-btn" onclick="addFriendOverlay()">X</button>
+        <input type="text" placeholder="Enter Username">
+        <button id="confirm-add-friend-btn">Add</button>
+      </div>
+    </div>
     <main id="main-content">
       <div id="chat-view">
         <div id="message-input">
@@ -66,8 +72,24 @@
               <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
               <p class="user-name">Amigo 2!</p>
             </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 3!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 4!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 5!</p>
+            </div>
           </div>
         </ul>
+      </div>
+      <div id="all-users">
+        <!-- List of all users like Online-users-->
+      </div>
       <div id="content"></div>
     </main>
   </div>

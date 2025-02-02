@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet d'un jeux</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Projet d'un jeux</h1>
+    <p>&nbsp;&nbsp; Ce jeux est le projet final de l'étape 1. Nous utilisons le langage de Python et nous apprenons le fonctionnement du code César.</p>
+    <p>&nbsp;&nbsp; Il fallait faire un jeux similaire à l'homme pendu. Il fallait deviner toute les bonnes lettres du mot.</p>
+    <p>&nbsp;&nbsp; Voici les lignes de code pour ce projet:</p>
+    <pre>
+<code>
+    import random
+    import string
+    import wonderwords
+
+    Random_Word = wonderwords.RandomWord()
+
+    def create_encryption():
+        alphabet = list(string.ascii_lowercase)
+        shuffled = alphabet[:]
+        random.shuffle(shuffled)
+        return {original: shuffled[i] for i, original in enumerate(alphabet)} | {" ": " ", ".": ".", "-": "-"}
+
+    def encrypt_word(word, encryption):
+        return ''.join(encryption[char] for char in word)
+
+    def display_guessing_word(encrypted_word):
+        return ''.join('_' if char.isalpha() else char for char in encrypted_word)
+
+    def get_user_guess():
+        while True:
+            guess = input("you chose the letter: ").lower()
+            if len(guess) == 1 and guess.isalpha():
+                return guess
+            print("\nchoose a valid letter")
+
+    def update_guessing_word(guess, word, current_guess):
+        return ''.join(guess if word[i] == guess else current_guess[i] for i in range(len(word)))
+
+    def play_game():
+        print("hello welcome to the encryption game")
+
+        while True:
+            word = Random_Word.word(word_min_length=3, word_max_length=8)
+            encryption = create_encryption()
+            encrypted_word = encrypt_word(word, encryption)
+            guessing_word = display_guessing_word(encrypted_word)
+
+            print(f"\nthe word has been chosen: {encrypted_word}!")
+            print(f"\ntry to guess the word: {guessing_word}")
+
+            while guessing_word != word:
+                letter = get_user_guess()
+                if letter in word:
+                    guessing_word = update_guessing_word(letter, word, guessing_word)
+                    print(f"the letter \"{letter}\" is in the word\n")
+                else:
+                    print(f"the letter \"{letter}\" is not in the word\n")
+
+                print(f"try to guess the word: {guessing_word}")
+
+            print(f"\ncongrats you guessed the word. the word was: {word}")
+
+            if input("do you want to play again? (yes/no): ").strip().lower() != "yes":
+                print("thank for playing")
+                break
+
+    if __name__ == "__main__":
+        play_game()
+    </code>
+        </pre>

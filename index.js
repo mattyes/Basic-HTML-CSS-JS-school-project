@@ -10,16 +10,20 @@ const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 2000;
 
 // Serve static files
-app.use(express.static(join(__dirname, './Frontend')));
-app.use(express.static(join(__dirname, './Frontend/src')));
+app.use(express.static(join(__dirname, './projects/project2')));
+app.use(express.static(join(__dirname, './projects/project2/Frontend/src')));
+app.use(express.static(join(__dirname, './projects/project2/Frontend/')));
+app.use(express.static(join(__dirname, './projects/project1/src/source.html')));
+app.use(express.static(join(__dirname, './projects/project1')));
+app.use(express.static(join(__dirname, './')));
+
 
 // Serve index.html
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, '/Frontend/src/index.html'));
+  res.sendFile(join(__dirname, './index.html'));
 });
 
 io.on('connection', (socket) => {

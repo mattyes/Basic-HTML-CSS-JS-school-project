@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat Interface</title>
+  <link href="./css/interface.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <ul class="friendsDM-list">
+      <div id="friends-header">
+        <i class="fa-solid fa-user-group" id="online-friends-btn" onclick="ShowOnlineFriends()"></i>
+        <br>
+        <i class="fa-solid fa-circle-plus" id="add-friend-btn" onclick="addFriendOverlay()"></i>
+      </div>
+      <div id="user-info">
+        <i class="fa-solid fa-gear" id="user-setting" onclick=""></i>
+    </ul>
+    <div id="addFriendOverlay">
+      <div class="add-friend-popup">
+        <h2>Add Friend</h2>
+        <button id="cancel-friend-btn" onclick="addFriendOverlay()">X</button>
+        <input type="text" placeholder="Enter Username">
+        <button id="confirm-add-friend-btn">Add</button>
+      </div>
+    </div>
+    <main id="main-content">
+      <div id="chat-view">
+        <div id="current-user-info">
+          <img src="../images/LogoTest.jpg" id="user-avatar" alt="User Avatar">
+          <p id="user-name">User Name</p>
+        </div>
+        <ul id="messages">
+        </ul> <!-- Chat message display -->
+        <div id="message-input">
+          <i class="fa-solid fa-square-plus"></i>
+          <textarea id="chat-box" placeholder="Type your message" rows="1"></textarea>
+        </div>
+      </div>
+      <div id="user-info">
+        <!-- User banner and info (Left side of screen on DM pages)-->
+      </div>
+      <div id="online-users">
+        <input id="friends-search-bar" type="text" placeholder="Search">
+        <p id="friends-counter-online">Online -- 5</p> <!-- TEMP! (Number of onlien friends)-->
+        <ul class="Online-friends-list">
+          <div id="online-users-list">
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 1!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 2!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 3!</p>
+            </div>
+            <div class="user-item">
+              <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+              <p class="user-name">Amigo 4!</p>
+            </div>
+              <div class="user-item">
+                <img src="../images/LogoTest.jpg" class="user-image" alt="User Avatar">
+                <p class="user-name">Amigo 5!</p>
+              </div>
+          </div>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+
+  <script src="./js/script.js" defer></script>
+  <script src="./js/view.js" defer></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+
+    // Get DOM elements
+    const chatBox = document.getElementById('chat-box');
+    const messages = document.getElementById('messages');
+
+    // Listen for the "Enter" key on the text area
+    chatBox.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault(); 
+        if (chatBox.value.trim()) { // Check if the message is not empty
+          socket.emit('chat message', chatBox.value.trim());
+          chatBox.value = ''; // Clear the text area
+        }
+      }
+    });
+
+    // Handle receiving messages
+    socket.on('chat message', (msg) => {
+      const item = document.createElement('li'); // Create a new list item
+      item.textContent = msg; // Set the message content
+      messages.appendChild(item); // Append the message to the list
+      messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+    });
+  </script>
+</body>
+
+</html>
